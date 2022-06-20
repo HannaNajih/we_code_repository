@@ -1,59 +1,169 @@
-import 'dart:math';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(helo_kurdistan());
-  //my first codebase
+  runApp(MyApp());
 }
 
-class helo_kurdistan extends StatelessWidget {
-  static const primaryColor = Color.fromARGB(255, 15, 87, 27);
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String _imgpurpletulib = 'Assets/purple_tulib.jpg';
+  String _imgwhitetulib = 'Assets/white_tulib.jpg';
+  String _imgpinktulib = 'Assets/pink_tulib.jpg';
+  String _setImage = 'assets/kurd_flag.jpg';
+  Widget changeImage(String image) {
+    return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      child: Image.asset(
+        'Assets/$image.png',
+        height: 110,
+        width: 110,
+      ),
+      onTap: () {
+        setState(() {
+          _setImage = image;
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("Kurdish Flag"),
-        backgroundColor: Colors.greenAccent,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 150.0,
-              width: 280.0,
-              color: Colors.transparent,
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                  child: new Center(
-                    child: new Image.asset(
-                      'images/Kurdistan_Flag.jpg',
-                      height: 350,
-                      fit: BoxFit.cover,
+            appBar: AppBar(
+                title: const Text('Image Button SlideShow'),
+                backgroundColor: Color.fromARGB(255, 127, 111, 170)),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(height: 50, width: 50),
+                Container(
+                    height: 300,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 179, 107, 192),
+                      border: Border.all(),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
-                  )),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Center(
-                child: Text(" Hello Kurdistan",
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.purpleAccent)))
-          ],
-        ),
-      ),
-    ));
+                    child: Image.asset('$_setImage')),
+                SizedBox(
+                  height: 50,
+                  width: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(height: 10, width: 10),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _setImage == _imgpinktulib;
+                        });
+                      },
+                      child: Container(
+                        height: 200,
+                        width: 200,
+                        child: ElevatedButton(
+                          onPressed: (() {
+                            setState(() {
+                              Image.asset(
+                                _imgpinktulib,
+                                height: 150,
+                                width: 150,
+                              );
+                            });
+                          }),
+                          child: Image.asset(
+                            _imgpinktulib,
+                            height: 150,
+                            width: 150,
+                            // color: Color.fromARGB(255, 209, 64, 112),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 145, 140, 160),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 20),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10, width: 10),
+                    Container(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _setImage == _imgwhitetulib;
+                            Image.asset(_imgpurpletulib);
+                          });
+                        },
+                        child: ElevatedButton(
+                          onPressed: (() {
+                            setState(() {
+                              Image.asset(
+                                _imgwhitetulib,
+                                height: 150,
+                                width: 150,
+                              );
+                            });
+                          }),
+                          child: Image.asset(
+                            _imgwhitetulib,
+                            height: 150,
+                            width: 150,
+                            // color: Color.fromARGB(255, 209, 64, 112),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 145, 140, 160),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 20),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10, width: 10),
+                    Container(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _setImage == _imgpurpletulib;
+                          });
+                        },
+                        child: ElevatedButton(
+                          onPressed: (() {
+                            setState(() {
+                              Image.asset(
+                                _imgpurpletulib,
+                                height: 150,
+                                width: 150,
+                              );
+                            });
+                          }),
+                          child: Image.asset(
+                            _imgpurpletulib,
+                            height: 150,
+                            width: 150,
+                            // color: Color.fromARGB(255, 209, 64, 112),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 145, 140, 160),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 20),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10, width: 10),
+                  ],
+                )
+              ],
+            )));
   }
 }
